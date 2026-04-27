@@ -1,0 +1,158 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GajiPlus+ Tools - Salary Splitter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #0f172a;
+            background-image: radial-gradient(circle at top right, #1e293b, #0f172a);
+            min-height: 100vh;
+            color: #f8fafc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 32px;
+        }
+        .result-item {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        .avatar-glow {
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.4);
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #ffffff, #a5b4fc, #6366f1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="p-6">
+
+    <div class="w-full max-w-lg">
+        <!-- Profile Branding Section -->
+        <div class="flex flex-col items-center mb-8 text-center">
+            <div class="relative mb-4">
+                <div class="absolute inset-0 bg-indigo-500 rounded-full blur-2xl opacity-30"></div>
+                <!-- Menggunakan Direct Link Gambar Montserrat yang Anda berikan -->
+                <img src="https://i.ibb.co.com/DDtCHxRb/Montserrat.png" 
+                     onerror="this.src='https://ui-avatars.com/api/?name=Gaji+Plus&background=6366f1&color=fff'"
+                     alt="GajiPlus Profile" 
+                     class="w-28 h-28 rounded-full border-4 border-indigo-500/30 relative z-10 avatar-glow object-cover">
+            </div>
+            <h2 class="text-3xl font-extrabold tracking-tight gradient-text">
+                GajiPlus+ Tools
+            </h2>
+            <p class="text-indigo-400 text-sm font-medium tracking-widest mt-2 uppercase">Smart Wealth Management</p>
+        </div>
+
+        <!-- Calculator Card -->
+        <div class="glass-card p-8 shadow-2xl">
+            <div class="mb-8">
+                <label for="salary" class="block text-xs font-bold text-indigo-300 uppercase tracking-[0.2em] mb-4 ml-1">Input Gaji Bulanan</label>
+                <div class="relative group">
+                    <div class="absolute inset-y-0 left-0 pl-6 flex items-center pointer-events-none">
+                        <span class="text-xl font-bold text-indigo-400">Rp</span>
+                    </div>
+                    <input type="number" id="salary" placeholder="Mulai ketik di sini..." 
+                        class="w-full pl-16 pr-6 py-5 bg-slate-900/60 border border-slate-700 rounded-2xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all text-2xl font-bold text-white placeholder-slate-700 shadow-inner">
+                </div>
+            </div>
+
+            <div class="grid gap-4">
+                <!-- Row 1: Kebutuhan -->
+                <div class="result-item p-5 bg-slate-800/40 rounded-2xl border border-slate-700/50 hover:border-blue-500/30 group">
+                    <div class="flex justify-between items-center mb-2">
+                        <div class="flex items-center gap-2 text-slate-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-500"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                            <span class="text-sm font-semibold group-hover:text-white transition-colors text-slate-300">Kebutuhan Pokok</span>
+                        </div>
+                        <span class="text-[10px] font-black text-blue-400 px-2 py-1 bg-blue-400/10 rounded-md uppercase tracking-wider">60%</span>
+                    </div>
+                    <div id="res-needs" class="text-2xl font-bold text-white tracking-tight">Rp 0</div>
+                </div>
+
+                <!-- Row 2: Hiburan -->
+                <div class="result-item p-5 bg-slate-800/40 rounded-2xl border border-slate-700/50 hover:border-purple-500/30 group">
+                    <div class="flex justify-between items-center mb-2">
+                        <div class="flex items-center gap-2 text-slate-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-500"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+                            <span class="text-sm font-semibold group-hover:text-white transition-colors text-slate-300">Gaya Hidup</span>
+                        </div>
+                        <span class="text-[10px] font-black text-purple-400 px-2 py-1 bg-purple-400/10 rounded-md uppercase tracking-wider">30%</span>
+                    </div>
+                    <div id="res-wants" class="text-2xl font-bold text-white tracking-tight">Rp 0</div>
+                </div>
+
+                <!-- Row 3: Tabungan -->
+                <div class="result-item p-5 bg-emerald-500/5 rounded-2xl border border-emerald-500/20 hover:bg-emerald-500/10 group">
+                    <div class="flex justify-between items-center mb-2">
+                        <div class="flex items-center gap-2 text-emerald-100/60">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-emerald-500"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                            <span class="text-sm font-semibold group-hover:text-emerald-300 transition-colors text-emerald-200">Investasi & Dana Darurat</span>
+                        </div>
+                        <span class="text-[10px] font-black text-emerald-400 px-2 py-1 bg-emerald-400/10 rounded-md uppercase tracking-wider">10%</span>
+                    </div>
+                    <div id="res-savings" class="text-2xl font-bold text-emerald-400 tracking-tight">Rp 0</div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="mt-8 pt-6 border-t border-slate-700/50 text-center">
+                <p class="text-[10px] text-slate-500 leading-relaxed uppercase tracking-[0.4em] font-bold">
+                    GajiPlus+ © 2024
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const salaryInput = document.getElementById('salary');
+        const resNeeds = document.getElementById('res-needs');
+        const resWants = document.getElementById('res-wants');
+        const resSavings = document.getElementById('res-savings');
+
+        const formatter = new Intl.NumberFormat('id-ID', {
+            style: 'currency',
+            currency: 'IDR',
+            minimumFractionDigits: 0
+        });
+
+        salaryInput.addEventListener('input', (e) => {
+            const val = parseFloat(e.target.value);
+            if (val && val > 0) {
+                resNeeds.textContent = formatter.format(val * 0.60);
+                resWants.textContent = formatter.format(val * 0.30);
+                resSavings.textContent = formatter.format(val * 0.10);
+                
+                // Efek visual angka bergerak
+                [resNeeds, resWants, resSavings].forEach(el => {
+                    el.style.transform = 'translateY(-2px)';
+                    setTimeout(() => el.style.transform = 'translateY(0)', 100);
+                });
+            } else {
+                resNeeds.textContent = "Rp 0";
+                resWants.textContent = "Rp 0";
+                resSavings.textContent = "Rp 0";
+            }
+        });
+    </script>
+</body>
+</html>
+
+```
